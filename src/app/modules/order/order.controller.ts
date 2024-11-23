@@ -14,10 +14,11 @@ const orderAbook = async (req: Request, res: Response) => {
 
     if (!productData) {
       // throw new Error('Product not Found!');
-      return res.status(404).json({
+      res.status(404).json({
         message: 'Book not found!',
-        status: false,
+        success: false,
       });
+      return;
     }
 
     if (productData.quantity < validOrderData.quantity) {
