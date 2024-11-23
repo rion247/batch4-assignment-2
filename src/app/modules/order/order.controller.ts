@@ -1,31 +1,40 @@
 import { Request, Response } from 'express';
 import { BookModel } from '../product/book/book.model';
 import { OrderService } from './order.service';
+import orderValidationByZod from './orderValidationByZod';
 
 const orderAbook = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
+
+    //zod validation
+    const validOrderData = orderValidationByZod.parse(orderData);
+
     const productData = await BookModel.findById(orderData.product);
 
     if (!productData) {
-      throw new Error('Product not Found!');
+      // throw new Error('Product not Found!');
+      return res.status(404).json({
+        message: 'Book not found!',
+        status: false,
+      });
     }
 
-    if (productData.quantity < orderData.quantity) {
-      throw new Error(' Insufficient stock!');
+    if (productData.quantity < validOrderData.quantity) {
+      throw new Error('Insufficient stock!');
     }
 
     if (productData.inStock === false) {
-      throw new Error(' Insufficient stock!');
+      throw new Error('Insufficient stock!');
     }
 
-    productData.quantity = productData.quantity - orderData.quantity;
+    productData.quantity = productData.quantity - validOrderData.quantity;
 
     if (productData.quantity <= 0) {
       productData.inStock = false;
     }
 
-    const saveOrder = await OrderService.saveOrderIntoDb(orderData);
+    const saveOrder = await OrderService.saveOrderIntoDb(validOrderData);
     const updateBookData = await productData.save();
 
     res.json({
