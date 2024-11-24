@@ -1,17 +1,48 @@
 import { Request, Response } from 'express';
 import { BookService } from './book.service';
 import bookValidationData from './bookValidationByZod';
+import { ValidationErrorMap } from './book.interface';
 
-const createAbook = async (req: Request, res: Response) => {
+const createAbook = async (req: Request, res: Response): Promise<void> => {
   try {
     const bookData = req.body;
 
     // validation by Zod
+    const validBookData = bookValidationData.safeParse(bookData);
 
-    const validBookData = bookValidationData.parse(bookData);
+    if (!validBookData.success) {
+      const errorDetails =
+        validBookData.error.errors.reduce<ValidationErrorMap>((acc, err) => {
+          const key = String(err.path[0]);
+          acc[key] = {
+            message: err.message,
+            name: 'ValidatorError',
+            properties: {
+              message: err.message,
+              type: 'min',
+              min: 0,
+            },
+            kind: 'min',
+            path: err.path,
+            value: req.body[key],
+          };
+          return acc;
+        }, {});
+
+      res.status(400).json({
+        message: 'Validation failed',
+        success: false,
+        error: {
+          name: 'ValidationError',
+          errors: errorDetails,
+        },
+        stack: new Error('Something went wrong').stack,
+      });
+      return;
+    }
 
     const createBookData =
-      await BookService.saveAbookDataIntoDatabase(validBookData);
+      await BookService.saveAbookDataIntoDatabase(bookData);
 
     res.status(200).json({
       message: 'Book created successfully',

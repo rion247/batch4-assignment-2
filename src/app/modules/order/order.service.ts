@@ -10,16 +10,16 @@ const calculateRevenueFromOrder = async () => {
   const revenue = await OrderModel.aggregate([
     {
       $lookup: {
-        from: 'books', // The 'books' collection
-        let: { productId: { $toObjectId: '$product' } }, // Convert product to ObjectId
+        from: 'books',
+        let: { productId: { $toObjectId: '$product' } },
         pipeline: [
           {
             $match: {
-              $expr: { $eq: ['$_id', '$$productId'] }, // Match the productId with _id in books
+              $expr: { $eq: ['$_id', '$$productId'] },
             },
           },
         ],
-        as: 'bookDetails', // Alias for the joined book details
+        as: 'bookDetails',
       },
     },
 

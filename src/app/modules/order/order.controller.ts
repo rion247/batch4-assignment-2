@@ -13,7 +13,6 @@ const orderAbook = async (req: Request, res: Response) => {
     const productData = await BookModel.findById(orderData.product);
 
     if (!productData) {
-      // throw new Error('Product not Found!');
       res.status(404).json({
         message: 'Book not found!',
         success: false,

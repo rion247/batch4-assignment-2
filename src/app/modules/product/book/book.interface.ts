@@ -11,3 +11,18 @@ export type TBook = {
 export type QueryType = {
   $or?: Array<{ [key: string]: { $regex: RegExp } }>;
 };
+
+export interface ValidationError {
+  message: string;
+  name: string;
+  properties: {
+    message: string;
+    type: string;
+    min: number;
+  };
+  kind: string;
+  path: (string | number)[];
+  value: string | number | boolean;
+}
+
+export type ValidationErrorMap = Record<string, ValidationError>;
