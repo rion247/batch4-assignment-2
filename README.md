@@ -1,4 +1,4 @@
-<ins># **Book Shop Store (B4A2V1)**</ins>
+# **<ins>Book Shop Store (B4A2V1)</ins>**
 
 An Express.js application built with TypeScript and MongoDB, designed to manage a book store with CRUD functionality for books and orders. The application ensures data integrity using Mongoose schema validation and supports essential bookstore operations such as product management, order placement, and revenue calculation.
 
