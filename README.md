@@ -77,4 +77,4 @@ Contributions are welcome! Please fork this repository and create a pull request
 
 ### **Live Deployment Link**
 
-- \*\*[Click Here](targetURL 'batch4-assignment-2.vercel.app')
+- [Click Here](targetURL 'batch4-assignment-2.vercel.app')
