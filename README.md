@@ -51,8 +51,8 @@ An Express.js application built with TypeScript and MongoDB, designed to manage 
 
 ### **Prerequisites**
 
-- **[Node.js]('https://nodejs.org/en')** installed on your machine.
-- **[MongoDB]('https://www.mongodb.com/')** set up and running.
+- **[Node.js](https://nodejs.org/en)** installed on your machine.
+- **[MongoDB](https://www.mongodb.com/)** set up and running.
 - A package manager like **npm** or **yarn**.
 
 ## **Installation Steps**
@@ -77,4 +77,4 @@ Contributions are welcome! Please fork this repository and create a pull request
 
 ### **Live Deployment Link**
 
-- [Click Here]('batch4-assignment-2.vercel.app')
+- [Click Here](batch4-assignment-2.vercel.app)
