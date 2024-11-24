@@ -74,3 +74,7 @@ An Express.js application built with TypeScript and MongoDB, designed to manage 
 ### **Contributing**
 
 Contributions are welcome! Please fork this repository and create a pull request for review.
+
+### **Live Deployment Link**
+
+- \*\*[Click Here](targetURL 'batch4-assignment-2.vercel.app')
