@@ -77,4 +77,4 @@ Contributions are welcome! Please fork this repository and create a pull request
 
 ### **Live Deployment Link**
 
-- [Click Here](batch4-assignment-2.vercel.app)
+- [Click Here](https://batch4-assignment-2.vercel.app/api/products)
