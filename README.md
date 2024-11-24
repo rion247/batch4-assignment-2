@@ -54,3 +54,23 @@ An Express.js application built with TypeScript and MongoDB, designed to manage 
 - **[Node.js](targetURL 'https://nodejs.org/en')** installed on your machine.
 - **[MongoDB](targetURL 'https://www.mongodb.com/')** set up and running.
 - A package manager like **npm** or **yarn**.
+
+## **Installation Steps**
+
+- Clone the Repository
+- Install Dependencies
+- Environment Variables Create a .env file in the root directory
+- Run the Application
+
+### **Technologies Used**
+
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB with Mongoose
+- **Language:** TypeScript
+- **Validation:** Mongoose Schema Validation
+- **Error Handling:** Centralized error middleware
+- **Environment Management:** dotenv
+
+### **Contributing**
+
+Contributions are welcome! Please fork this repository and create a pull request for review.
